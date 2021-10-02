@@ -25,7 +25,7 @@ SECRET_KEY = 'lylzi$li0m$#kiqra4k=@1h1p(sv&x1)c!rg+#=+6l%+9c%786'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'video-downloader-web.herokuapp.com']
 
 
 STATICFILES_DIRS = [
