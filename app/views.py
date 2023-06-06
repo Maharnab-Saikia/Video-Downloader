@@ -1,19 +1,21 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
-import youtube_dl
-
+from django.shortcuts import render
+from pytube import YouTube
 
 def downloader(request):
-
     if request.method == 'POST':
         video_url = request.POST['link']
 
+        print(video_url)
+
         if video_url:
-            ydl_opts = {'outtmp1': 'D:/'}
-            with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-                ydl.download([video_url])
-            return render(request, 'index.html')
+            try:
+                yt = YouTube(video_url)
+                yt.streams.get_highest_resolution().download()
+                return render(request, 'index.html')
+            except Exception as e:
+                return HttpResponse("Error: " + str(e))
         else:
             return render(request, 'index.html')
-			
+
     return render(request, 'index.html')

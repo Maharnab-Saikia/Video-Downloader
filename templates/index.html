@@ -7,82 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <title>YouTube Video Downloader</title>
+    <title>YouTube Downloader</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-gray-100">
 
-    <header>
-
-        <a href="/" id="logo">
-            <img src="{% static 'images/logo.png' %}" alt="Logo" width="40px" height="40px">
-            <span>YouTube Video Downloader</span>
-        </a>
-
-    </header>
-
-    <div class="box">
-        <form action="" method="POST">
-            {% csrf_token %}
-
-            <input type="text" id="link" name="link" placeholder=" Enter Video URL">
-            <button type="submit" id="btn">Download</button>
-
-        </form>
-    </div>
-
-    <!-- Trigger/Open The Modal -->
-    <button id="myBtn"><img src="/static/images/information.png" alt="information" id="info"></button>
-
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>About Developer</h2>
-            <p>Hi, I am <strong>Maharnab Saikia</strong> a Web Developer and a Programmer from Assam, India. I am
-                currently learning
-                React and Django. This is a Youtube video downloader website made with Django, this is my first django
-                project.</p>
-            <h3>Thank You for using my website</h3>
-            <p>I am still a student, so a coffee would come in handy.</p>
-            <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
-                data-name="bmc-button" data-slug="Maharnab" data-color="#FFDD00" data-emoji="" data-font="Lato"
-                data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000"
-                data-coffee-color="#ffffff"></script>
+    <div class="flex flex-col items-center justify-center min-h-screen">
+        <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+            <h1 class="text-2xl font-bold mb-4">YouTube Downloader</h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <label for="link" class="text-sm">Video URL:</label>
+                <input type="text" id="link" name="link" placeholder="Enter YouTube video URL"
+                    class="w-full border border-gray-300 rounded-md px-4 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button type="submit" id="btn"
+                    class="w-full bg-blue-500 text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:shadow-outline">
+                    Download
+                </button>
+            </form>
+            <div id="output" class="mt-4"></div>
         </div>
-
     </div>
-
-    <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks the button, open the modal 
-        btn.onclick = function () {
-            modal.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-
 
 </body>
 
